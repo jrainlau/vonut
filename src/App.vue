@@ -1,0 +1,99 @@
+<template>
+  <div id="vonut" class="vonut">
+    <nav class="vonut-nav">Vonut</nav>
+    <main class="vonut-main">
+      <transition :name="transitionName">
+        <router-view class="vonut-main-view"></router-view>
+      </transition>
+    </main>
+    <section class="vonut-tags">
+      <tags></tags>
+    </section>
+  </div>
+</template>
+
+<script>
+import tags from '~components/tags'
+
+export default {
+  data () {
+    return {
+      nav: false,
+      transitionName: ''
+    }
+  },
+  watch: {
+    $route (to, from) {
+      to.path === '/' ? this.transitionName = 'slide-left' : this.transitionName = 'slide-right'
+    }
+  },
+  mounted () {
+    this.$store.dispatch('getArticles')
+  },
+  methods: {
+    showNav () {
+      this.nav = !this.nav
+    }
+  },
+  components: {
+    tags
+  }
+}
+</script>
+
+<style lang="less">
+@transition: all ease .4s;
+@import '~assets/style.less';
+@import '~assets/markdown.less';
+@import '~assets/transition.less';
+
+.vonut {
+  position: relative;
+  min-height: 100%;
+  overflow: scroll;
+  padding-top: 60px;
+  &-nav {
+    position: fixed;
+    top: 0;
+    height: 60px;
+    line-height: 60px;
+    width: 100%;
+    background: #5E35B1;
+    padding: 0 30px;
+    box-sizing: border-box;
+    color: #fff;
+    z-index: 9000;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, .3);
+  }
+  &-main {
+    position: relative;
+    max-width: 1024px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    &-view {
+      transition: all ease .5s;
+    }
+    &> section {
+      background: #fff;
+      width: 100%;
+      margin-top: 15px;
+      padding: 15px;
+      box-sizing: border-box;
+      box-shadow: 0 3px 12px rgba(0, 0, 0, .3);
+      p:first-child {
+        display: none;
+      }
+      img {
+        max-width: 100%;
+      }
+    }
+  }
+  &-tags {
+    position: fixed;
+    right: 2vw;
+    bottom: 10vh;
+    z-index: 9999;
+  }
+}
+</style>
