@@ -13,7 +13,8 @@ module.exports = merge(basicConfig, {
     'js/app': './src/main.js',
     'js/vendor': [
       'vue',
-      'vue-router'
+      'vue-router',
+      'vuex'
     ]
   },
   devtool: 'source-map',

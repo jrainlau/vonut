@@ -1,2 +1,0 @@
-webpackJsonp([2],{24:function(n,e,t){var l=t(2)(null,t(44),null,null,null);n.exports=l.exports},44:function(n,e){n.exports={render:function(){var n=this,e=n.$createElement;return(n._self._c||e)("div",{staticClass:"404"},[n._v("\n  404 page\n")])},staticRenderFns:[]}}});
-//# sourceMappingURL=2.c311f5a1.js.map
