@@ -9,6 +9,17 @@
     "desc": "Markcook, a smart and beautiful markdown editor",
     "cover": "markcook.png"
   },
+  "motto.md": {
+    "title": "Motto",
+    "tags": [
+      "javascript",
+      "vue",
+      "tool"
+    ],
+    "date": "2016-08-05",
+    "desc": "Show your motto in an amazing way!",
+    "cover": "motto.png"
+  },
   "scion.md": {
     "title": "Scion",
     "tags": [
@@ -18,6 +29,15 @@
     "date": "2016-07-01",
     "desc": "A light tool to generate projects in an easy way",
     "cover": "scion.png"
+  },
+  "sphinx.md": {
+    "title": "Sphinx",
+    "tags": [
+      "javascript"
+    ],
+    "date": "2016-07-15",
+    "desc": "A very light JS library which could encode a string to an image, or decode an image to a string",
+    "cover": "sphinx.png"
   },
   "vue-occupy.md": {
     "title": "Vue-Occupy",
@@ -29,25 +49,5 @@
     "date": "2016-08-01",
     "desc": "A Vue directive for occupying content places before the data has been loaded",
     "cover": "vue-occupy.png"
-  },
-  "sphinx.md": {
-    "title": "Sphinx",
-    "tags": [
-      "javascript"
-    ],
-    "date": "2016-07-15",
-    "desc": "A very light JS library which could encode a string to an image, or decode an image to a string",
-    "cover": "sphinx.png"
-  },
-  "motto.md": {
-    "title": "Motto",
-    "tags": [
-      "javascript",
-      "vue",
-      "tool"
-    ],
-    "date": "2016-08-05",
-    "desc": "Show your motto in an amazing way!",
-    "cover": "motto.png"
   }
 }

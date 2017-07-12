@@ -51,12 +51,19 @@ export default {
 .list {
   margin: 0 auto;
   width: 100%;
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Chrome/Safari/Opera */
+  -khtml-user-select: none; /* Konqueror */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none;
   &-wrapper {
-    padding: 0;
+    margin-top: 10px;
+    padding: 0 10px;
     list-style: none;
     li {
       background: #fff;
-      margin-bottom: 30px;
+      margin-bottom: 15px;
       border-radius: 4px;
       overflow: hidden;
       box-shadow: 0 3px 12px rgba(0, 0, 0, .1);

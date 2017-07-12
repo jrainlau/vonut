@@ -6,7 +6,9 @@
         <li v-for="(tag, key) in tags" :key="key" class="tags-list-item" @click="selectTag(tag)">{{tag}}</li>
       </ul>
     </transition>
-    <button class="tags-btn" @click="onClick">{{btnContent}}</button>
+    <button class="tags-btn" @click="onClick">
+      <i class="fa" :class="iconName"></i>
+    </button>
   </div>
 </template>
 
@@ -21,7 +23,9 @@ export default {
   },
   mounted () {
     document.addEventListener('click', (e) => {
-      if (e.target.className !== 'tags-list-item' && e.target.className !== 'tags-btn') {
+      const target = e.target.className
+      console.log(e.target.className)
+      if (target !== 'tags-list-item' && target !== 'tags-btn' && target !== 'fa fa-bars') {
         this.showTags = false
       }
     })
@@ -33,8 +37,8 @@ export default {
     routeName () {
       return this.$route.path
     },
-    btnContent () {
-      return this.routeName === '/' ? '+' : '<'
+    iconName () {
+      return this.routeName === '/' ? 'fa-bars' : 'fa-chevron-left'
     }
   },
   methods: {
@@ -70,7 +74,7 @@ export default {
     &-item {
       width: 80px;
       padding: 5px 15px;
-      margin-bottom: 15px;
+      margin-bottom: 5px;
       background: #fff;
       box-shadow: 0 3px 12px rgba(0, 0, 0, .1);
       transition: @transition;
@@ -89,9 +93,11 @@ export default {
   &-btn {
     background: #E53935;
     border: none;
-    width: 55px;
-    height: 55px;
-    border-radius: 100%;
+    width: 60px;
+    height: 60px;
+    padding: 0;
+    border-radius: 60px;
+    text-align: center;
     outline: none;
     position: absolute;
     left: 50%;
@@ -100,7 +106,7 @@ export default {
     box-shadow: 2px 3px 12px rgba(0, 0, 0, .1);
     transition: @transition;
     color: #fff;
-    font-size: 26px;
+    font-size: 24px;
     &:hover {
       box-shadow: 2px 6px 15px rgba(0, 0, 0, .2);
     }

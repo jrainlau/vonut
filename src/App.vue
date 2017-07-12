@@ -1,6 +1,9 @@
 <template>
   <div id="vonut" class="vonut">
-    <nav class="vonut-nav">Vonut</nav>
+    <nav class="vonut-nav" :class="{'hide': !showNav}">
+      <span>Vonut</span>
+      <span @click="githubLink"><i class="fa fa-github"></i></span>
+    </nav>
     <main class="vonut-main">
       <transition :name="transitionName">
         <router-view class="vonut-main-view"></router-view>
@@ -19,7 +22,8 @@ export default {
   data () {
     return {
       nav: false,
-      transitionName: ''
+      transitionName: '',
+      showNav: true
     }
   },
   watch: {
@@ -29,10 +33,21 @@ export default {
   },
   mounted () {
     this.$store.dispatch('getArticles')
+    const body = document.body
+    body.onscroll = (e) => {
+      if (body.scrollTop > 40) {
+        this.showNav = false
+      } else {
+        this.showNav = true
+      }
+    }
   },
   methods: {
     showNav () {
       this.nav = !this.nav
+    },
+    githubLink () {
+      window.location.href = 'https://github.com/jrainlau/vonut'
     }
   },
   components: {
@@ -51,24 +66,34 @@ export default {
   position: relative;
   min-height: 100%;
   overflow: scroll;
-  padding-top: 60px;
+  padding-top: 40px;
   &-nav {
     position: fixed;
     top: 0;
-    height: 60px;
-    line-height: 60px;
+    height: 40px;
+    line-height: 40px;
     width: 100%;
     background: #5E35B1;
-    padding: 0 30px;
+    padding: 0 15px;
     box-sizing: border-box;
     color: #fff;
     z-index: 9000;
     box-shadow: 0 3px 12px rgba(0, 0, 0, .3);
+    display: flex;
+    justify-content: space-between;
+    transition: all ease .3s;
+    .fa {
+      font-size: 18px;
+    }
+    &.hide {
+      transform: translateY(-40px);
+    }
   }
   &-main {
     position: relative;
     max-width: 1024px;
     margin: 0 auto;
+    box-sizing: border-box;
     display: flex;
     justify-content: center;
     &-view {
@@ -92,7 +117,7 @@ export default {
   &-tags {
     position: fixed;
     right: 2vw;
-    bottom: 10vh;
+    bottom: 100px;
     z-index: 9999;
   }
 }
