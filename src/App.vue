@@ -34,7 +34,7 @@ export default {
   mounted () {
     this.$store.dispatch('getArticles')
     const body = document.body
-    body.onscroll = (e) => {
+    body.onscroll = () => {
       if (body.scrollTop > 40) {
         this.showNav = false
       } else {

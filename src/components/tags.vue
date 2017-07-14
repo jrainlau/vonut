@@ -24,7 +24,6 @@ export default {
   mounted () {
     document.addEventListener('click', (e) => {
       const target = e.target.className
-      console.log(e.target.className)
       if (target !== 'tags-list-item' && target !== 'tags-btn' && target !== 'fa fa-bars') {
         this.showTags = false
       }
