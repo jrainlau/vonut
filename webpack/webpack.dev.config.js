@@ -11,6 +11,11 @@ module.exports = merge(basicConfig, {
   entry: {
     app: './src/main.js'
   },
+  output: {
+    filename: 'js/[name].js',
+    path: resolve('dist'),
+    publicPath: '/'
+  },
   module: {
     rules: [
       {

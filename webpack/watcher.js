@@ -1,4 +1,4 @@
-console.log('Watching dirs...');
+console.log('Watching dirs...')
 const { resolve } = require('path')
 const chokidar = require('chokidar')
 const { readFileSync, writeFileSync } = require('fs')

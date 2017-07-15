@@ -17,11 +17,6 @@ const markdown = require('markdown-it')({
 const resolve = dir => join(__dirname, '..', dir)
 
 module.exports = {
-  output: {
-    filename: 'js/[name].js',
-    path: resolve('dist'),
-    publicPath: '/'
-  },
   module: {
     rules: [
       {
