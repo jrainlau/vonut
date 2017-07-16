@@ -14,12 +14,24 @@ function getArticleInfo (path) {
   let content
   if (/\.md/.test(fileName)) {
     content = readFileSync(resolve(__dirname, `../articles/${fileName}`)).toString().replace(/[\n\r]/g, '')
+    const articlesInfo = JSON.parse(readFileSync(resolve(__dirname, '../articles/articles.json')).toString())
     try {
       const info = content.match(/\{(.*?)\}/)[1]
       articleInfoObj[fileName] = JSON.parse(`{${info}}`)
       writeFileSync(resolve(__dirname, '../articles/articles.json'), JSON.stringify(articleInfoObj, null, 2))
       console.log('articles.json has been updated.')
     } catch (__) {}
+  }
+}
+
+function deleteArticles (path) {
+  const fileName = path.split('/').pop()
+  let articlesInfo
+  if (/\.md/.test(fileName)) {
+    articlesInfo = JSON.parse(readFileSync(resolve(__dirname, '../articles/articles.json')).toString())
+    delete(articlesInfo[fileName])
+    writeFileSync(resolve(__dirname, '../articles/articles.json'), JSON.stringify(articlesInfo, null, 2))
+    console.log(`${fileName} has been removed`)
   }
 }
 
@@ -57,6 +69,7 @@ watcher
   .on('unlink', (path) => {
     console.log('delete: ' + path)
     deleteRoutes(path, routes)
+    deleteArticles(path)
   })
 
 module.exports = watcher

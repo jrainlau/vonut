@@ -6,17 +6,17 @@ Vue.use(Vuex)
 const store = new Vuex.Store({
   state: {
     allArticles: [],
-    articles: [],
+    shownArticles: [],
     tags: [],
     selectedTag: 'all'
   },
 
   mutations: {
-    ALL_ARTICLES (_state, allArticles) {
+    GET_ALL_ARTICLES (_state, allArticles) {
       _state.allArticles = allArticles
     },
-    GET_ARTICLES (_state, articles) {
-      _state.articles = articles
+    SHOW_ARTICLES (_state, shownArticles) {
+      _state.shownArticles = shownArticles
     },
     GET_TAGS (_state, tags) {
       _state.tags = tags
@@ -39,8 +39,8 @@ const store = new Vuex.Store({
           desc: articles[name].desc
         }
       })
-      commit('ALL_ARTICLES', articlesArr)
-      commit('GET_ARTICLES', articlesArr)
+      commit('GET_ALL_ARTICLES', articlesArr)
+      commit('SHOW_ARTICLES', articlesArr)
 
       const tagsSet = new Set()
       articlesArr.forEach(({ tags }) => {
@@ -52,21 +52,21 @@ const store = new Vuex.Store({
     },
     selectTag ({ state, commit }, tag) {
       if (tag) {
-        const tagedArticles = state.allArticles.filter(({ tags }) => {
+        const tagArticles = state.allArticles.filter(({ tags }) => {
           return tags.includes(tag)
         })
-        commit('GET_ARTICLES', tagedArticles)
+        commit('SHOW_ARTICLES', tagArticles)
         commit('SELECT_TAG', tag)
       } else {
-        commit('GET_ARTICLES', state.allArticles)
+        commit('SHOW_ARTICLES', state.allArticles)
         commit('SELECT_TAG', 'all')
       }
     }
   },
 
   getters: {
-    articles (_state) {
-      return _state.articles
+    shownArticles (_state) {
+      return _state.shownArticles
     },
     tags (_state) {
       return _state.tags

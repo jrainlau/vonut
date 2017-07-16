@@ -3,9 +3,9 @@
     <ul class="list-wrapper">
       <transition-group name="list">
         <li
-          v-for="(item, key) in articles"
+          v-for="(item, key) in shownArticles"
           :key="key"
-          @click="$router.push(`/${articles[key].name.replace(/\.md/, '')}`)">
+          @click="$router.push(`/${shownArticles[key].name.replace(/\.md/, '')}`)">
           <section class="head">
             <img v-if="item.cover" :src="require(`~articles/imgs/${item.cover}`)" alt="">
             <h1>{{item.title}}</h1>
@@ -29,9 +29,11 @@ import { mapGetters } from 'vuex'
 export default {
   computed: {
     ...mapGetters([
-      'articles',
-      'selectedTag'
+      'shownArticles'
     ])
+  },
+  mounted () {
+    this.$store.dispatch('getArticles')
   }
 }
 </script>
