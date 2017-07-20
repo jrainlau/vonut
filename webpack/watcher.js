@@ -60,7 +60,7 @@ watcher
   .on('add', (path) => {
     console.log('add:' + path)
     getArticleInfo(path)
-    generateRoutes(path, routes)
+    // generateRoutes(path, routes)
   })
   .on('change', (path) => {
     console.log('change: ' + path)
@@ -69,7 +69,7 @@ watcher
   .on('unlink', (path) => {
     console.log('delete: ' + path)
     deleteRoutes(path, routes)
-    deleteArticles(path)
+    // deleteArticles(path)
   })
 
 module.exports = watcher

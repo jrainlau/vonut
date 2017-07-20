@@ -37,11 +37,6 @@ export default {
       }
     }
   },
-  methods: {
-    showNav () {
-      this.nav = !this.nav
-    }
-  },
   components: {
     navigator,
     tags
