@@ -35,6 +35,7 @@ module.exports = merge(basicConfig, {
     host: ip.address()
   },
   plugins: [
+    new webpack.optimize.ModuleConcatenationPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NamedModulesPlugin(),
     new HtmlWebpackPlugin({

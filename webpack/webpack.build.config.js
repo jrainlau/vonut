@@ -17,7 +17,6 @@ module.exports = merge(basicConfig, {
       'vuex'
     ]
   },
-  devtool: 'source-map',
   output: {
     path: resolve('docs'),
     publicPath: '/vonut/',
@@ -43,6 +42,7 @@ module.exports = merge(basicConfig, {
     ]
   },
   plugins: [
+    new webpack.optimize.ModuleConcatenationPlugin(),
     new ExtractTextPlugin({
       filename: 'css/[name].[contenthash:8].css',
       allChunks: true
