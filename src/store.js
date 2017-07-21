@@ -27,6 +27,10 @@ const store = new Vuex.Store({
   },
 
   actions: {
+    /**
+     * Get all the articles' information from articles.json
+     * Generate tags list
+     */
     getArticles ({ commit }) {
       const articles = require('~articles/articles.json')
       const articlesArr = Object.keys(articles).map((name) => {
@@ -50,6 +54,10 @@ const store = new Vuex.Store({
       })
       commit('GET_TAGS', [...tagsSet])
     },
+    /**
+     * Select a tag and filt the article list that matches the tag
+     * @param { String } tag tag name
+     */
     selectTag ({ state, commit }, tag) {
       if (tag) {
         const tagArticles = state.allArticles.filter(({ tags }) => {

@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-// import routes from './routes'
 import articlesInfo from '~articles/articles.json'
 
 const routes = [

@@ -1,5 +1,5 @@
 console.log('Watching dirs...')
-const { resolve } = require('path')
+const { resolve, basename } = require('path')
 const chokidar = require('chokidar')
 const { readFileSync, writeFileSync } = require('fs')
 
@@ -10,7 +10,7 @@ const routes = [
 ]
 
 function getArticleInfo (path) {
-  const fileName = path.split('/').pop()
+  const fileName = basename(path)
   let content
   if (/\.md/.test(fileName)) {
     content = readFileSync(resolve(__dirname, `../articles/${fileName}`)).toString().replace(/[\n\r]/g, '')
@@ -25,7 +25,7 @@ function getArticleInfo (path) {
 }
 
 function deleteArticles (path) {
-  const fileName = path.split('/').pop()
+  const fileName = basename(path)
   let articlesInfo
   if (/\.md/.test(fileName)) {
     articlesInfo = JSON.parse(readFileSync(resolve(__dirname, '../articles/articles.json')).toString())
@@ -36,7 +36,7 @@ function deleteArticles (path) {
 }
 
 function generateRoutes (path, routes) {
-  const fileName = path.split('/').pop()
+  const fileName = base(path)
   if (/\.md/.test(fileName)) {
     const fileContent = `{ path: '/${fileName.replace(/\.md/, '')}', component: resolve => require(['~articles/${fileName}'], resolve) }`
     routes.splice(1, 0, fileContent)
@@ -45,7 +45,7 @@ function generateRoutes (path, routes) {
 }
 
 function deleteRoutes (path, routes) {
-  const fileName = path.split('/').pop()
+  const fileName = base(path)
   if (/\.md/.test(fileName)) {
     const fileContent = `{ path: '/${fileName.replace(/\.md/, '')}', component: resolve => require(['~articles/${fileName}'], resolve) }`
     const index = routes.indexOf(fileContent)

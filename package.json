@@ -5,7 +5,7 @@
   "author": "JrainLau <jrainlau@163.com>",
   "main": "dist/index.js",
   "scripts": {
-    "dev": "node_modules/.bin/webpack-dev-server --config webpack/dev.js",
+    "dev": "node_modules/.bin/webpack-dev-server --config webpack/dev.js --open",
     "build": "node_modules/.bin/webpack -p --config webpack/build.js --progress --profile --colors",
     "deploy": "npm run build && git add . && git commit -m 'update' && git push"
   },
