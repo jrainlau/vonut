@@ -35,32 +35,12 @@ function deleteArticles (path) {
   }
 }
 
-function generateRoutes (path, routes) {
-  const fileName = base(path)
-  if (/\.md/.test(fileName)) {
-    const fileContent = `{ path: '/${fileName.replace(/\.md/, '')}', component: resolve => require(['~articles/${fileName}'], resolve) }`
-    routes.splice(1, 0, fileContent)
-    writeFileSync(resolve(__dirname, '../src/routes.js'), `export default ${JSON.stringify(routes, null, 2).replace(/\"/g, '')}\n`)
-  }
-}
-
-function deleteRoutes (path, routes) {
-  const fileName = base(path)
-  if (/\.md/.test(fileName)) {
-    const fileContent = `{ path: '/${fileName.replace(/\.md/, '')}', component: resolve => require(['~articles/${fileName}'], resolve) }`
-    const index = routes.indexOf(fileContent)
-    routes.splice(index, 1)
-    writeFileSync(resolve(__dirname, '../src/routes.js'), `export default ${JSON.stringify(routes, null, 2).replace(/\"/g, '')}\n`)
-  }
-}
-
 const watcher = chokidar.watch(resolve(__dirname, '../articles'))
 
 watcher
   .on('add', (path) => {
     console.log('add:' + path)
     getArticleInfo(path)
-    // generateRoutes(path, routes)
   })
   .on('change', (path) => {
     console.log('change: ' + path)
@@ -68,8 +48,7 @@ watcher
   })
   .on('unlink', (path) => {
     console.log('delete: ' + path)
-    deleteRoutes(path, routes)
-    // deleteArticles(path)
+    deleteArticles(path)
   })
 
 module.exports = watcher
