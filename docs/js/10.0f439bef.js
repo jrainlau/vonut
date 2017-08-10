@@ -1,1 +1,0 @@
-webpackJsonp([10],{29:function(o,p,n){o.exports=n.p+"img/motto.d8607d53.png"}});
