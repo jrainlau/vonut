@@ -32,7 +32,7 @@ module.exports = merge(basicConfig, {
     inline: true,
     publicPath: '/',
     stats: 'minimal',
-    host: ip.address()
+    host: 'localhost'
   },
   plugins: [
     new webpack.optimize.ModuleConcatenationPlugin(),

@@ -1,5 +1,6 @@
 const { join } = require('path')
 const hljs = require('highlight.js')
+const OfflinePlugin = require('offline-plugin')
 const markdown = require('markdown-it')({
   highlight (str, lang) {
     if (lang && hljs.getLanguage(lang)) {
@@ -81,5 +82,8 @@ module.exports = {
       '~store': resolve('src/store'),
       '~articles': resolve('articles')
     }
-  }
+  },
+  plugins: [
+    new OfflinePlugin()
+  ]
 }
