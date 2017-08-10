@@ -9,6 +9,16 @@
     "desc": "Markcook, a smart and beautiful markdown editor",
     "cover": "markcook.png"
   },
+  "scion.md": {
+    "title": "Scion",
+    "tags": [
+      "javascript",
+      "nodejs"
+    ],
+    "date": "2016-07-01",
+    "desc": "A light tool to generate projects in an easy way",
+    "cover": "scion.png"
+  },
   "motto.md": {
     "title": "Motto",
     "tags": [
@@ -20,16 +30,6 @@
     "desc": "Show your motto in an amazing way!",
     "cover": "motto.png"
   },
-  "scion.md": {
-    "title": "Scion",
-    "tags": [
-      "javascript",
-      "nodejs"
-    ],
-    "date": "2016-07-01",
-    "desc": "A light tool to generate projects in an easy way",
-    "cover": "scion.png"
-  },
   "sphinx.md": {
     "title": "Sphinx",
     "tags": [
@@ -37,15 +37,6 @@
     ],
     "date": "2016-07-15",
     "desc": "A very light JS library which could encode a string to an image, or decode an image to a string",
-    "cover": "sphinx.png"
-  },
-  "sw.md": {
-    "title": "Service worker",
-    "tags": [
-      "javascript"
-    ],
-    "date": "2016-08-10",
-    "desc": "sw support",
     "cover": "sphinx.png"
   },
   "vue-occupy.md": {
